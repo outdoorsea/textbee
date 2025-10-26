@@ -11,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.vernu.sms.ApiManager;
 import com.vernu.sms.AppConstants;
 import com.vernu.sms.BuildConfig;
-import com.vernu.sms.TextBeeUtils;
+import com.vernu.sms.MyndyUtils;
 import com.vernu.sms.dtos.RegisterDeviceInputDTO;
 import com.vernu.sms.dtos.RegisterDeviceResponseDTO;
 import com.vernu.sms.helpers.SharedPreferenceHelper;
@@ -33,9 +33,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
                 false
             );
             
-            if(stickyNotificationEnabled && TextBeeUtils.isPermissionGranted(context, Manifest.permission.RECEIVE_SMS)){
+            if(stickyNotificationEnabled && MyndyUtils.isPermissionGranted(context, Manifest.permission.RECEIVE_SMS)){
                 Log.i(TAG, "Device booted, starting sticky notification service");
-                TextBeeUtils.startStickyNotificationService(context);
+                MyndyUtils.startStickyNotificationService(context);
             }
             
             // Report device info to server if device is registered

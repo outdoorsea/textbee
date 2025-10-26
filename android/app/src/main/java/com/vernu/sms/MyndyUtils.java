@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TextBeeUtils {
-    private static final String TAG = "TextBeeUtils";
-    
+public class MyndyUtils {
+    private static final String TAG = "MyndyUtils";
+
     public static boolean isPermissionGranted(Context context, String permission) {
         return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED;
     }
@@ -42,14 +42,14 @@ public class TextBeeUtils {
         if(!isPermissionGranted(context, Manifest.permission.RECEIVE_SMS)){
             return;
         }
-        
+
         // Only start service if user has enabled sticky notification
         boolean stickyNotificationEnabled = SharedPreferenceHelper.getSharedPreferenceBoolean(
                 context,
                 AppConstants.SHARED_PREFS_STICKY_NOTIFICATION_ENABLED_KEY,
                 false
         );
-        
+
         if (stickyNotificationEnabled) {
             Intent notificationIntent = new Intent(context, StickyNotificationService.class);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -68,10 +68,10 @@ public class TextBeeUtils {
         context.stopService(notificationIntent);
         Log.i(TAG, "Stopping sticky notification service");
     }
-    
+
     /**
      * Log a non-fatal exception to Crashlytics with additional context information
-     * 
+     *
      * @param throwable The exception to log
      * @param message A message describing what happened
      * @param customData Optional map of custom key-value pairs to add as context
@@ -79,10 +79,10 @@ public class TextBeeUtils {
     public static void logException(Throwable throwable, String message, Map<String, Object> customData) {
         try {
             Log.e(TAG, message, throwable);
-            
+
             FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
             crashlytics.log(message);
-            
+
             // Add any custom data as key-value pairs
             if (customData != null) {
                 for (Map.Entry<String, Object> entry : customData.entrySet()) {
@@ -103,14 +103,14 @@ public class TextBeeUtils {
                     }
                 }
             }
-            
+
             // Record the exception
             crashlytics.recordException(throwable);
         } catch (Exception e) {
             Log.e(TAG, "Error logging exception to Crashlytics", e);
         }
     }
-    
+
     /**
      * Simplified method to log a non-fatal exception with just a message
      */

@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.vernu.sms.ApiManager;
 import com.vernu.sms.AppConstants;
-import com.vernu.sms.TextBeeUtils;
+import com.vernu.sms.MyndyUtils;
 import com.vernu.sms.dtos.SMSDTO;
 import com.vernu.sms.dtos.SMSForwardResponseDTO;
 import com.vernu.sms.receivers.SMSStatusReceiver;
@@ -38,7 +38,7 @@ public class SMSHelper {
      */
     public static boolean sendSMS(String phoneNo, String message, String smsId, String smsBatchId, Context context) {
         // Check if we have permission to send SMS
-        if (!TextBeeUtils.isPermissionGranted(context, Manifest.permission.SEND_SMS)) {
+        if (!MyndyUtils.isPermissionGranted(context, Manifest.permission.SEND_SMS)) {
             Log.e(TAG, "SMS permission not granted. Unable to send SMS.");
             
             // Report failure to API
@@ -95,8 +95,8 @@ public class SMSHelper {
     public static boolean sendSMSFromSpecificSim(String phoneNo, String message, int simSubscriptionId, 
                                       String smsId, String smsBatchId, Context context) {
         // Check for required permissions
-        if (!TextBeeUtils.isPermissionGranted(context, Manifest.permission.SEND_SMS) ||
-            !TextBeeUtils.isPermissionGranted(context, Manifest.permission.READ_PHONE_STATE)) {
+        if (!MyndyUtils.isPermissionGranted(context, Manifest.permission.SEND_SMS) ||
+            !MyndyUtils.isPermissionGranted(context, Manifest.permission.READ_PHONE_STATE)) {
             Log.e(TAG, "SMS or Phone State permission not granted. Unable to send SMS from specific SIM.");
             
             // Report failure to API

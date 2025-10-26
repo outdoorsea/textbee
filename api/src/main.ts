@@ -18,8 +18,8 @@ async function bootstrap() {
   })
 
   const config = new DocumentBuilder()
-    .setTitle('TextBee API Docs')
-    .setDescription('TextBee - Android SMS Gateway API Docs')
+    .setTitle('Myndy AI SMS API Docs')
+    .setDescription('Myndy AI SMS - Android SMS Gateway API Docs')
     .setVersion('1.0')
     .addBearerAuth()
     .addApiKey({

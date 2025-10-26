@@ -48,19 +48,21 @@ android {
     productFlavors {
         dev {
             dimension "environment"
-            applicationId "com.vernu.sms.dev"
+            applicationId "com.myndyai.sms.dev"
             versionNameSuffix "-dev"
-            buildConfigField "String", "API_BASE_URL", '"https://api.dev.textbee.dev/api/v1/"'
+            // Local development - point to localhost for Android emulator
+            buildConfigField "String", "API_BASE_URL", '"http://10.0.2.2:5000/api/v1/sms/"'
             buildConfigField "String", "ENVIRONMENT", '"development"'
-            resValue "string", "app_name", "textbee.dev (Dev)"
+            resValue "string", "app_name", "Myndy SMS (Dev)"
         }
-        
+
         prod {
             dimension "environment"
-            applicationId "com.vernu.sms"
-            buildConfigField "String", "API_BASE_URL", '"https://api.textbee.dev/api/v1/"'
+            applicationId "com.myndyai.sms"
+            // Production - point to myndyai.com
+            buildConfigField "String", "API_BASE_URL", '"https://www.myndyai.com/api/v1/sms/"'
             buildConfigField "String", "ENVIRONMENT", '"production"'
-            resValue "string", "app_name", "textbee.dev"
+            resValue "string", "app_name", "Myndy AI SMS Gateway"
         }
     }
 
