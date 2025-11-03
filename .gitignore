@@ -1,5 +1,48 @@
-.vercel
-.DS_Store
-*-monitor
 
+__pycache__/
+.claude/settings.local.json
 .cursor
+.DS_Store
+.env
+.env.local
+.env.production
+.myndy_tokens.json
+.Python
+.vercel
+*_backup.*
+*-monitor
+*.backup
+*.db
+*.egg-info/
+*.json.bak
+*.key
+*.log
+*.pem
+*.py[cod]
+*.so
+*.sqlite
+*.sqlite3
+*$py.class
+# === Added by cleanup script ===
+# API Keys and secrets
+# Backups
+# Credentials and tokens
+# Data directories
+# Databases
+# Logs
+# Node
+# OS
+# Python
+# Repomix output (contains full codebase)
+backups/
+build/
+config/credentials/*.json
+data/
+database/
+dist/
+logs/
+node_modules/
+npm-debug.log*
+repomix-output.xml
+Thumbs.db
+token_*.json
